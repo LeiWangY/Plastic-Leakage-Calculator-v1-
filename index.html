@@ -13,7 +13,7 @@
         .header h1 { color: #2c3e50; font-size: 2.5em; margin-bottom: 10px; }
         .header p { color: #7f8c8d; font-size: 1.1em; }
         .main-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .input-panel, .results-panel { background: rgba(255,255,255,0.95); padding: 25px; border-radius: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; }
+        .input-panel, .results-panel { background: rgba(255,255,255,0.95); padding: 25px; border-radius: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-height: 290vh; overflow-y: auto; }
         .section { margin-bottom: 20px; border: 2px solid #e8f4fd; border-radius: 10px; padding: 15px; transition: all 0.3s; }
         .section:hover { border-color: #3498db; }
         .section-header { display: flex; justify-content: space-between; cursor: pointer; padding: 10px; background: linear-gradient(90deg, #3498db, #2980b9); color: white; border-radius: 8px; margin-bottom: 15px; }
@@ -53,7 +53,7 @@
     <div class="container">
         <div class="header">
             <h1>Plastic Leakage Calculator</h1>
-            <p>Based on Guiding Document v3</p>
+            <p>A demo for quantifying plastic leakage as part of the UNEP/EC Project ‘Identifying and quantifying plastic contaminant sources and leakages into the aquatic environment’</p>
         </div>
 
         <div class="main-content">
@@ -172,10 +172,15 @@
                     <div class="section-header" onclick="toggle('prod')">
                         <h3>A1.1 Plastic Production & Manufacturing</h3>
                         <button class="toggle-btn" id="prod-btn">+</button>
+                        
                     </div>
                     <div class="section-content collapsed" id="prod">
+                       <img src="image/1.jpg" alt="Leakage from Plastic Production & Manufacturing" style="width:100%; border-radius:8px; margin-bottom:15px;">
+                        <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 1.1 Leakage pathways in production and manufacturing. AI generated image</h6>
+                        
                         <div class="default-values">
-                            <h5>Default Leakage: 0.01-0.04% per stage</h5>
+                            <h5>Reference </h5>
+                            <p>Leakage factor: 0.01-0.04% per stage</p>
                         </div>
                         <div class="input-group">
                             <label>Plastic Produced/Handled (kg/yr)</label>
@@ -183,15 +188,15 @@
                         </div>
                         <div class="input-group">
                             <label>Production Leakage (%)</label>
-                            <input type="number" id="prodLeak" value="0.025" step="0.001">
+                            <input type="number" id="prodLeak" placeholder="e.g., 0.025" step="0.001">
                         </div>
                         <div class="input-group">
                             <label>Handling Leakage (%)</label>
-                            <input type="number" id="handleLeak" value="0.025" step="0.001">
+                            <input type="number" id="handleLeak" placeholder="e.g., 0.025" step="0.001">
                         </div>
                         <div class="input-group">
                             <label>Processing Leakage (%)</label>
-                            <input type="number" id="procLeak" value="0.025" step="0.001">
+                            <input type="number" id="procLeak" placeholder="e.g., 0.025" step="0.001">
                         </div>
                     </div>
                 </div>
@@ -207,109 +212,166 @@
                             <h4>A1.2.1 Agriculture</h4>
                             
                             <h5 style="margin: 10px 0 5px 0; color: #3498db;">Plastic Mulching</h5>
+                            <img src="image/2.1.1.jpg" alt="Leakage from Agricultural Plastic Mulching" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 10px 0 5px 0; color: #5f6569;">Fig 1.1 Leakage pathways from Agricultural Plastic Mulching. AI generated image</h6>
+
+                            <div class="default-values">
+                              <h5>Reference </h5>
+                              <p>Application rates: Europe 185kg/ha, Asia 63kg/ha, America 10-20kg/ha</p>
+                              <p>Retrieval rates: Europe 90-98%, Asia 32%, America 32%</p>                           
+                            </div>
                             <div class="input-group">
                                 <label>Area (ha)</label>
                                 <input type="number" id="mulchArea" placeholder="e.g., 50000">
                             </div>
                             <div class="input-group">
                                 <label>Application Rate (kg/ha)</label>
-                                <input type="number" id="mulchRate" value="63">
+                                <input type="number" id="mulchRate" placeholder="e.g., 63">
                             </div>
                             <div class="input-group">
                                 <label>Retrieval Rate (%)</label>
-                                <input type="number" id="mulchRetr" value="32">
+                                <input type="number" id="mulchRetr" placeholder="e.g., 32">
                             </div>
 
-                            <h5 style="margin: 10px 0 5px 0; color: #3498db;">Greenhouses</h5>
+                            <h5 style="margin: 10px 0 5px 0; color: #3498db;">Greenhouses and tunnels</h5>
+                            <img src="image/2.1.2.jpg" alt="Greenhouses and tunnels used in agriculture" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 10px 0 5px 0; color: #5f6569;">Fig 1.2 Greenhouses and tunnels used in agriculture. AI generated image</h6>
+
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Global average usage rate: 3,500 kg/ha</p>
+                                <p>Collection rates: Europe 61%, South America 58%, North America and Oceania 40%, Africa 21%, Asia 3%</p>
+                            </div>
                             <div class="input-group">
                                 <label>Area (ha)</label>
                                 <input type="number" id="ghArea" placeholder="e.g., 10000">
                             </div>
                             <div class="input-group">
                                 <label>Usage Rate (kg/ha)</label>
-                                <input type="number" id="ghRate" value="3500">
+                                <input type="number" id="ghRate" placeholder="e.g., 3500">
                             </div>
                             <div class="input-group">
                                 <label>Collection Rate (%)</label>
-                                <input type="number" id="ghColl" value="40">
+                                <input type="number" id="ghColl" placeholder="e.g., 40">
                             </div>
 
                             <h5 style="margin: 10px 0 5px 0; color: #3498db;">Irrigation</h5>
+                            <img src="image/2.1.3.jpg" alt="Leakage from Irrigation" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 2.1.3 Agricultural pipes made of plastics. Source: Extracted from ori-plast.</h6>
+                            
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Application rate: ~400 kg/ha for irrigation tape</p>
+                                <p>Collection rates: France 35%, Europe 49.5%</p> 
+                            </div>
+                            
                             <div class="input-group">
                                 <label>Area (ha)</label>
                                 <input type="number" id="irrArea" placeholder="e.g., 25000">
                             </div>
                             <div class="input-group">
                                 <label>Application Rate (kg/ha)</label>
-                                <input type="number" id="irrRate" value="400">
+                                <input type="number" id="irrRate" placeholder="e.g., 400">
                             </div>
                             <div class="input-group">
                                 <label>Retrieval Rate (%)</label>
-                                <input type="number" id="irrRetr" value="42">
+                                <input type="number" id="irrRetr" placeholder="e.g., 42">
                             </div>
 
-                            <h5 style="margin: 10px 0 5px 0; color: #3498db;">Silage</h5>
+                            <h5 style="margin: 10px 0 5px 0; color: #3498db;">Silage tubes and bale wraps</h5>
+                            <img src="image/2.1.4.jpg" alt="Leakage from Silage" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 2.1.4 Silage tubes and bale wraps used in agriculture. AI generated image</h6>
+                            
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Application rates: Clamp silage (Europe) 4.7kg/ha, Baled silage 23.5kg/ha</p>
+                                <p>Retrieval rates: 65-90% (Germany 68%, Ireland 88%)</p>
+                                
+                            </div>
+                            
                             <div class="input-group">
                                 <label>Area (ha)</label>
                                 <input type="number" id="silArea" placeholder="e.g., 15000">
                             </div>
                             <div class="input-group">
                                 <label>Application Rate (kg/ha)</label>
-                                <input type="number" id="silRate" value="23.5">
+                                <input type="number" id="silRate" placeholder="e.g., 23.5">
                             </div>
-                            <div class="input-group">
-                                <label>Degradation Rate (%)</label>
-                                <input type="number" id="silDeg" value="1">
-                            </div>
+                          
                             <div class="input-group">
                                 <label>Retrieval Rate (%)</label>
-                                <input type="number" id="silRetr" value="78">
+                                <input type="number" id="silRetr" placeholder="e.g., 78">
                             </div>
 
-                            <h5 style="margin: 10px 0 5px 0; color: #3498db;">Coated Seeds/Fertilizers</h5>
+                            <h5 style="margin: 10px 0 5px 0; color: #3498db;">Plastic coated Seeds/Fertilizers</h5>
+                            <img src="image/2.1.5.png" alt="Leakage from Agricultural Coated Seeds/Fertilizers" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 2.1.5 Plastic-coated seeds and fertilizers. AI generated image</h6>
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Application rates: Fertilizers 40kg/ha</p>
+                                <p>Plastic content: 0.6%-5%</p>
+                            </div>
                             <div class="input-group">
                                 <label>Area (ha)</label>
                                 <input type="number" id="coatArea" placeholder="e.g., 100000">
                             </div>
                             <div class="input-group">
                                 <label>Seeds Rate (kg/ha)</label>
-                                <input type="number" id="seedRate" value="50">
+                                <input type="number" id="seedRate" placeholder="e.g., 50">
                             </div>
                             <div class="input-group">
                                 <label>Seeds Plastic (%)</label>
-                                <input type="number" id="seedPlast" value="2">
+                                <input type="number" id="seedPlast" placeholder="e.g., 2">
                             </div>
                             <div class="input-group">
                                 <label>Fertilizer Rate (kg/ha)</label>
-                                <input type="number" id="fertRate" value="40">
+                                <input type="number" id="fertRate" placeholder="e.g., 40">
                             </div>
                             <div class="input-group">
                                 <label>Fertilizer Plastic (%)</label>
-                                <input type="number" id="fertPlast" value="2">
+                                <input type="number" id="fertPlast" placeholder="e.g., 2">
                             </div>
                         </div>
 
                         <div class="subsection">
                             <h4>A1.2.2 Fisheries</h4>
+                            <img src="image/2.2.jpg" alt="Leakage from Fisheries" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 2.2 Leakage pathways in fisheries. AI generated image</h6>
+                            
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>An average of 1.82% of all fishing gear types is lost</p>
+                               
+                            </div>
+
                             <div class="input-group">
                                 <label>Annual Catch (tonnes)</label>
                                 <input type="number" id="fishCatch" placeholder="e.g., 500000">
                             </div>
                             <div class="input-group">
                                 <label>Lost Gear (kg/tonne)</label>
-                                <input type="number" id="gearLoss" value="0.75" step="0.01">
+                                <input type="number" id="gearLoss" placeholder="e.g., 0.75" step="0.01">
                             </div>
                         </div>
 
                         <div class="subsection">
                             <h4>A1.2.3 Aquaculture</h4>
+                            <img src="image/2.3.png" alt="Leakage from Aquaculture" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 2.3 Leakage pathways in aquaculture. source: https://www.sciencedirect.com/science/article/abs/pii/S0045653523021938</h6>
+                            
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Leakage Factor: 0.13 kg/tonne (FAO, 2021), 0.18 kg/tonne (EIA,2023)</p>
+                               
+                            </div>
+
                             <div class="input-group">
                                 <label>Production (tonnes)</label>
                                 <input type="number" id="aquaProd" placeholder="e.g., 200000">
                             </div>
                             <div class="input-group">
                                 <label>Leakage Factor (kg/tonne)</label>
-                                <input type="number" id="aquaLeak" value="0.15" step="0.01">
+                                <input type="number" id="aquaLeak" placeholder="e.g., 0.15" step="0.01">
                             </div>
                         </div>
                     </div>
@@ -323,42 +385,68 @@
                     <div class="section-content collapsed" id="diffuse">
                         <div class="subsection">
                             <h4>Artificial Turf</h4>
+                            <img src="image/3.1.jpg" alt="Leakage from Artificial Turf" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 3.1 Leakage pathways in artificial turf. AI generated image</h6>
+                            
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Field size: 7526 m² (FIFA standard full-size pitch )</p>
+                                <p>Fiber density: 1.3-1.7 kg/m²</p>
+                                <p>Leakage: 0.5-10% per year</p>
+                                <p>Infill loss: 40.5 kg/field/year</p>
+                            </div>
+
                             <div class="input-group">
                                 <label>Area (m²)</label>
                                 <input type="number" id="turfArea" placeholder="e.g., 1000000">
                             </div>
                             <div class="input-group">
                                 <label>Fiber Density (kg/m²)</label>
-                                <input type="number" id="turfDens" value="1.5" step="0.1">
+                                <input type="number" id="turfDens" placeholder="e.g., 1.5" step="0.1">
                             </div>
                             <div class="input-group">
                                 <label>Leakage (%/yr)</label>
-                                <input type="number" id="turfLeak" value="5" step="0.1">
+                                <input type="number" id="turfLeak" placeholder="e.g., 5" step="0.1">
                             </div>
                             <div class="input-group">
                                 <label>Infill Loss (kg/m²/yr)</label>
-                                <input type="number" id="infillLoss" value="0.005" step="0.001">
+                                <input type="number" id="infillLoss" placeholder="e.g., 0.005" step="0.001">
                             </div>
                         </div>
 
                         <div class="subsection">
                             <h4>Rubber Surfaces</h4>
+                            <img src="image/3.2.png" alt="Leakage from Rubber Surfaces" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 3.2 Leakage pathways in rubber surfaces. AI generated image</h6>
+                            
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Plastic density: 5.0-15.0 kg/m²</p>
+                                <p>Leakage: 13.4 g/m²/year</p>
+                            </div>
+
                             <div class="input-group">
                                 <label>Area (m²)</label>
                                 <input type="number" id="rubArea" placeholder="e.g., 100000">
                             </div>
                             <div class="input-group">
                                 <label>Density (kg/m²)</label>
-                                <input type="number" id="rubDens" value="12">
+                                <input type="number" id="rubDens" placeholder="e.g., 12">
                             </div>
                             <div class="input-group">
                                 <label>Leakage (g/m²/yr)</label>
-                                <input type="number" id="rubLeak" value="13.4" step="0.1">
+                                <input type="number" id="rubLeak" placeholder="e.g., 13.4" step="0.1">
                             </div>
                         </div>
 
                         <div class="subsection">
                             <h4>Paint</h4>
+                            <img src="image/3.3.png" alt="Leakage from Paint" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 3.3 Leakage pathways in paint. AI generated image</h6>
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Leakage factors: Automotive 6%, Architectural 8%, Maritime 39%, Road marking 14%, Industrial wood 9%, General industry 2%</p>
+                            </div>
                             <div class="input-group">
                                 <label>Supply (kg/yr)</label>
                                 <input type="number" id="paintSupp" placeholder="e.g., 10000000">
@@ -378,25 +466,38 @@
 
                         <div class="subsection">
                             <h4>Shoe Soles</h4>
+                            <img src="image/3.4.png" alt="Leakage from Shoe Soles" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 3.4 Leakage pathways in shoe soles. AI generated image</h6>
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Average: 75.3 grams microplastic per person per year</p>
+                            </div>
                             <div class="input-group">
                                 <label>Leakage (kg/person/yr)</label>
-                                <input type="number" id="shoeLeak" value="0.0753" step="0.0001">
+                                <input type="number" id="shoeLeak" placeholder="e.g., 0.0753" step="0.0001">
                             </div>
                         </div>
 
                         <div class="subsection">
                             <h4>Tyre Abrasion</h4>
+                            <img src="image/3.5.png" alt="Leakage from Tyre Abrasion" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                            <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 3.5 Leakage pathways in tyre abrasion. Source: https://link.springer.com/chapter/10.1007/12_2022_118</h6>
+                            <div class="default-values">
+                                <h5>Reference </h5>
+                                <p>Loss rates: Motorcycle 45 mg/km, Passenger cars 102 mg/km, Buses 415 mg/km, Trucks 517-658 mg/km</p>
+                                <p>Plastic fraction: 35-60% depending on vehicle type</p>
+                            </div>
                             <div class="input-group">
                                 <label>Distance (km/yr)</label>
                                 <input type="number" id="tyreDist" placeholder="e.g., 500000000">
                             </div>
                             <div class="input-group">
                                 <label>Loss Rate (mg/km)</label>
-                                <input type="number" id="tyreLoss" value="150">
+                                <input type="number" id="tyreLoss" placeholder="e.g., 150">
                             </div>
                             <div class="input-group">
                                 <label>Plastic Fraction (%)</label>
-                                <input type="number" id="tyrePlast" value="35">
+                                <input type="number" id="tyrePlast" placeholder="e.g., 35">
                             </div>
                         </div>
                     </div>
@@ -408,17 +509,28 @@
                         <button class="toggle-btn" id="waste-btn">+</button>
                     </div>
                     <div class="section-content collapsed" id="waste">
+                        <img src="image/4.png" alt="Leakage from Wastewater" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                        <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 4 Leakage pathways in wastewater. Source: Acarer, (2023)</h6>
+                        
+                        <div class="default-values">
+                            <h5>Reference</h5>
+                            <p>Influent Concentration (mg/L):2.5-13.6</p>
+                            <p>Removal Efficiency (%):Primary: 50-80%, Secondary: 85-95%, Advanced: 95-99.9%  </p>
+                            <p>Overflow: due to hydraulic overload, globally 10-30% of untreated flows</p>
+                            
+                        </div>
+                        
                         <div class="input-group">
                             <label>Treated (m³/yr)</label>
                             <input type="number" id="wwTreat" placeholder="e.g., 1000000000">
                         </div>
                         <div class="input-group">
                             <label>Influent Conc (mg/L)</label>
-                            <input type="number" id="wwConc" value="5" step="0.1">
+                            <input type="number" id="wwConc" placeholder="e.g., 5" step="0.1">
                         </div>
                         <div class="input-group">
                             <label>Removal Eff (%)</label>
-                            <input type="number" id="wwRem" value="90">
+                            <input type="number" id="wwRem" placeholder="e.g., 90">
                         </div>
                         <div class="input-group">
                             <label>Overflow (m³/yr)</label>
@@ -433,21 +545,32 @@
                         <button class="toggle-btn" id="solid-btn">+</button>
                     </div>
                     <div class="section-content collapsed" id="solid">
+                        <img src="image/5.png" alt="Leakage from Solid Waste" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                        <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 5 Leakage pathways in solid waste. AI generated image</h6>
+                       
+                        <div class="default-values">
+                            <h5>Reference</h5>
+                            <p>Collection loss: 6-45%</p>
+                            <p>Transport loss: 2.5-6%</p>
+                            <p>Disposal loss (landfill): 0-5%</p>
+                            <p>Disposal loss (Open dump): 12-30%</p>
+                        </div>
+                       
                         <div class="input-group">
                             <label>Plastic Waste (kg/yr)</label>
                             <input type="number" id="swGen" placeholder="e.g., 50000000">
                         </div>
                         <div class="input-group">
                             <label>Collection Loss (%)</label>
-                            <input type="number" id="swColl" value="22.5">
+                            <input type="number" id="swColl" placeholder="e.g., 22.5">
                         </div>
                         <div class="input-group">
                             <label>Transport Loss (%)</label>
-                            <input type="number" id="swTrans" value="4">
+                            <input type="number" id="swTrans" placeholder="e.g., 4">
                         </div>
                         <div class="input-group">
                             <label>Disposal Loss (%)</label>
-                            <input type="number" id="swDisp" value="15">
+                            <input type="number" id="swDisp" placeholder="e.g., 15">
                         </div>
                     </div>
                 </div>
@@ -458,19 +581,23 @@
                         <button class="toggle-btn" id="uncoll-btn">+</button>
                     </div>
                     <div class="section-content collapsed" id="uncoll">
+                        <img src="image/6.png" alt="Leakage from Uncollected Waste" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                        <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 6 Leakage pathways in uncollected waste. AI generated image</h6>
+
                         <div class="default-values">
-                            <h5>Reference Values (kg/person/yr):</h5>
-                            <p>High Income: Litter 0.065, Burn 0.01</p>
-                            <p>Middle Income: Litter 0.2-0.3, Burn 3-7</p>
-                            <p>Low Income: Litter 0.5, Burn 3-5</p>
+                            <h5>Reference</h5>
+                            <p>High Income(kg/person/yr): Litter 0.06-0.07, Burn 0.01</p>
+                            <p>Upper-Middle Income(kg/person/yr): Litter 0.15-0.17, Burn 3.42-3.75</p>
+                            <p>Lower-Middle Income(kg/person/yr): Litter 0.26-0.29, Burn 5.14-5.72</p>
+                            <p>Low Income(kg/person/yr): Litter 0.51-0.56, Burn 3.42-3.75</p>
                         </div>
                         <div class="input-group">
                             <label>Littering (kg/person/yr)</label>
-                            <input type="number" id="litter" value="0.2" step="0.001">
+                            <input type="number" id="litter" placeholder="e.g., 0.2" step="0.001">
                         </div>
                         <div class="input-group">
                             <label>Open Burning (kg/person/yr)</label>
-                            <input type="number" id="burn" value="3" step="0.1">
+                            <input type="number" id="burn" placeholder="e.g., 3" step="0.1">
                         </div>
                     </div>
                 </div>
@@ -481,6 +608,17 @@
                         <button class="toggle-btn" id="recov-btn">+</button>
                     </div>
                     <div class="section-content collapsed" id="recov">
+                        <img src="image/7.png" alt="Leakage from Plastic Recovery" style="width:100%; border-radius:8px; margin-bottom:10px;">
+                        <h6 style="margin: 0 0 5px 0; color: #5f6569;">Fig 7 Leakage pathways in plastic recovery. AI generated image</h6>
+                        
+                        <div class="default-values">
+                            <h5>Reference</h5>
+                            <p>High Income Countries: informal 1.3%, formal 0</p>
+                            <p>Upper Middle Income: informal 3.64%, formal 2.52%</p>
+                            <p>Lower Middle Income: informal 16.08%, formal 11.92%</p>
+                            <p>Low Income Countries: informal 54.08%, formal 0.04%</p>
+                        </div>
+                        
                         <div class="input-group">
                             <label>Collected for Recycling (kg/yr)</label>
                             <input type="number" id="recColl" placeholder="e.g., 5000000">
@@ -587,7 +725,7 @@
             const mulch = v('mulchArea') * v('mulchRate') * (100 - v('mulchRetr')) / 100;
             const gh = v('ghArea') * v('ghRate') * (100 - v('ghColl')) / 100;
             const irr = v('irrArea') * v('irrRate') * (100 - v('irrRetr')) / 100;
-            const sil = v('silArea') * v('silRate') * v('silDeg') / 100 * (100 - v('silRetr')) / 100;
+            const sil = v('silArea') * v('silRate') * (100 - v('silRetr')) / 100;
             const seed = v('coatArea') * v('seedRate') * v('seedPlast') / 100;
             const fert = v('coatArea') * v('fertRate') * v('fertPlast') / 100;
             const agri = mulch + gh + irr + sil + seed + fert;
